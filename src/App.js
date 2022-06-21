@@ -1,12 +1,24 @@
 import './App.css';
-import Header from './components/Header';
-import TodoList from './pages/TodoList';
+import { HashRouter, Route, Routes } from "react-router-dom";
+import Header from './components/Header'
+import TodoList from './pages/TodoList'
+
+
+
 function App() {
   return (
-<div>
-<Header></Header>
-<TodoList></TodoList>
-</div>
+    <HashRouter>
+    <div>
+      <div>
+    <Header/>
+    <Routes>
+        <Route path="/" element={<TodoList/>}/>
+        <Route path="/todos" element={<TodoList/>}/>
+     
+    </Routes>
+    </div>
+    </div>
+</HashRouter>
   );
 }
 
