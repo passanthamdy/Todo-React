@@ -1,28 +1,28 @@
 import React from 'react'
 import {useState ,useEffect} from 'react'
-
+import ListItem from '../components/ListItem'
 function TodoList() {
-  let [notes, setNotes]=useState([])
+  let [todos, setTodos]=useState([])
   let [errMsg]=useState("")
   
   useEffect(() => {
     fetch('/api/todos')
     .then((response)=>{return response.json()})
-    .then((data)=>{setNotes(data)})
+    .then((data)=>{setTodos(data)})
     .catch((err)=>{console.log('error')})
   }, []);
   let renderTodos = ()=>{
-    if(notes.length>0){
+    if(todos.length>0){
 
-      return notes.map((note, index)=>{
+      return todos.map((todo)=>{
    
 
           return (
             
              
               <div>
-                <h3>{note.title}</h3>
-                 <p> {note.body}</p> 
+          <ListItem key={todo.id} todo={todo}></ListItem>
+
               </div>
        
               )
