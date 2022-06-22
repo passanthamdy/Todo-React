@@ -8,7 +8,7 @@ import Todo from './pages/Todo';
 function App() {
   return (
     <BrowserRouter>
-    <div className='container dark'>
+    <div className='container'>
       <div className='app'>
     <Header/>
     <Routes>

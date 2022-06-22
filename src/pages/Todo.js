@@ -38,12 +38,12 @@ function Todo() {
                     </NavLink>
                 )}
             </div>
-            <div>
+            <div className="cont">
             <input placeholder="title" defaultValue={todo?.title} onChange={(e) => {
                         setTodo({...todo,'title': e.target.value})
                     }}
                     type="text"></input>
-                <textarea onChange={(e)=>{setTodo({...todo,'body': e.target.value})}}
+                <textarea placeholder="type the body" onChange={(e)=>{setTodo({...todo,'body': e.target.value})}}
                  defaultValue={todo?.body}>
 
                 </textarea>
