@@ -15,14 +15,16 @@ function Todo() {
   let renderTodoObj = () => {
     
       return (
-        <div>
-            <div>       
-            </div>
+        <div className="todo">
+            <div className="todo-header">      
             <h1>{todo.title} </h1>
+            </div>
             <div>
-              {todo.body} 
-              <br/>
-              {todo.created_at}
+                <input placeholder="title" defaultValue={todo?.title}  type="text"></input>
+
+                <textarea  defaultValue={todo?.body}>
+
+                </textarea>
                
             </div>
          

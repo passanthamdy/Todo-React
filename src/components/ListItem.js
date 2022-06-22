@@ -2,7 +2,7 @@ import React from 'react'
 
 function ListItem({todo}) {
   return (
-    <div>
+    <div className='todos-list-item'>
         <h3>{todo.title}</h3>
         <p>{todo.body}</p>
         <p> {todo.created_at} </p>

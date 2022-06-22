@@ -2,9 +2,9 @@ import React from 'react'
 
 function Header() {
   return (
-    <div>
+    <div className='app-header'>
 
-        <h1>Todo List Header </h1>
+        <h1>Todo List </h1>
     </div>
   )
 }
