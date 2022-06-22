@@ -44,7 +44,8 @@ function TodoList() {
   return (
     <div>
        <div className='todos-header'>
-        <h3>My tasks to do </h3>
+       <h3>&#9782; To do tasks </h3>
+                <p className='notes-count'> {todos.length} </p>
       </div>
       <AddTodo></AddTodo>
       {renderTodos()}
