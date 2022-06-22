@@ -13,7 +13,8 @@ function Todo() {
       .then((data) => { setTodo(data)  })
       .catch((err) => { console.log("error");});
   }, [id]);
- 
+
+
   let renderTodoObj = () => {
     
       return (
@@ -21,17 +22,18 @@ function Todo() {
             <div className="todo-header">      
             <h3>
                 <NavLink to={'/'}>
-                    back 
+                    <p onClick={updateTodo}>update</p> 
                 </NavLink>
                  </h3>
-             
-
                 
             </div>
             <div>
-                <input placeholder="title" defaultValue={todo?.title}  type="text"></input>
-
-                <textarea defaultValue={todo?.body}>
+            <input placeholder="title" defaultValue={todo?.title} onChange={(e) => {
+                        setTodo({...todo,'title': e.target.value})
+                    }}
+                    type="text"></input>
+                <textarea onChange={(e)=>{setTodo({...todo,'body': e.target.value})}}
+                 defaultValue={todo?.body}>
 
                 </textarea>
                
@@ -43,7 +45,16 @@ function Todo() {
   };
 
 
-
+  let updateTodo = async () => {
+    fetch(`/api/todos/${id}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(todo)
+    }).catch((err)=>{console.log('error')})
+    console.log("body : ", todo.body)
+}
 
 
 
