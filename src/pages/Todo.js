@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import {ReactComponent as LeftArrow} from '../assets/left-arrow.svg'
 
 function Todo() {
   let { id } = useParams();
@@ -24,12 +25,18 @@ function Todo() {
             <div className="todo-header">      
             <h3>
                 <NavLink to={'/'}>
-                    <p  onClick={handleSubmit}>create or update</p> 
+                    <LeftArrow  onClick={handleSubmit}></LeftArrow> 
                 </NavLink>
                  </h3>
-                 <NavLink to={'/'}>
+                 {id !== 'add' ? (
+                   <NavLink to={'/'}>
                     <button onClick={deleteTodo}>Delete</button>
                     </NavLink>
+                ) : (
+                  <NavLink to={'/'}>
+                    <button onClick={handleSubmit} >Done</button>
+                    </NavLink>
+                )}
             </div>
             <div>
             <input placeholder="title" defaultValue={todo?.title} onChange={(e) => {
@@ -86,7 +93,7 @@ let createTodo = async () => {
     {
        if(id !== 'add'){
         updateTodo()
-     }else if(id ==='add' ) {
+     }else if(id ==='add' && todo.body && todo.title ) {
         console.log('create')
       createTodo()
      }else{
