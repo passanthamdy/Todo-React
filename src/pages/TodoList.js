@@ -20,8 +20,8 @@ function TodoList() {
           return (
             
              
-              <div>
-          <ListItem key={todo.id} todo={todo}></ListItem>
+              <div  key={todo.id} >
+          <ListItem todo={todo}></ListItem>
 
               </div>
        

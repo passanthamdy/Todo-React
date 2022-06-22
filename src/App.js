@@ -1,24 +1,27 @@
 import './App.css';
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from './components/Header'
 import TodoList from './pages/TodoList'
-
+import Todo from './pages/Todo';
 
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
     <div>
       <div>
     <Header/>
     <Routes>
         <Route path="/" element={<TodoList/>}/>
         <Route path="/todos" element={<TodoList/>}/>
+        <Route path="/todos/:id" element={<Todo/>}/>
+
+
      
     </Routes>
     </div>
     </div>
-</HashRouter>
+</BrowserRouter>
   );
 }
 
