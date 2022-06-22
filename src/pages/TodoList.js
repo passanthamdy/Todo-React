@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ListItem from "../components/ListItem";
+import { NavLink } from "react-router-dom";
+
 function TodoList() {
   let [todos, setTodos] = useState([]);
   let [errMsg] = useState("");
@@ -20,10 +22,14 @@ function TodoList() {
   let renderTodos = () => {
     if (todos.length > 0) {
       return todos.map((todo) => {
+        let url='/todos/'+todo.id;
+
         return (
           <div className="todos">
             <div key={todo.id} className="todo-list">
-              <ListItem todo={todo}></ListItem>
+                 <NavLink to={url}>
+                  <ListItem  todo={todo}></ListItem>
+                  </NavLink>
             </div>
           </div>
         );

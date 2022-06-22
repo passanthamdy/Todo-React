@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 function Todo() {
   let { id } = useParams();
   let [todo, setTodo] = useState({});
@@ -17,12 +19,19 @@ function Todo() {
       return (
         <div className="todo">
             <div className="todo-header">      
-            <h1>{todo.title} </h1>
+            <h3>
+                <NavLink to={'/'}>
+                    back 
+                </NavLink>
+                 </h3>
+             
+
+                
             </div>
             <div>
                 <input placeholder="title" defaultValue={todo?.title}  type="text"></input>
 
-                <textarea  defaultValue={todo?.body}>
+                <textarea defaultValue={todo?.body}>
 
                 </textarea>
                
