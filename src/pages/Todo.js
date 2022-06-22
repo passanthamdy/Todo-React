@@ -25,7 +25,9 @@ function Todo() {
                     <p onClick={updateTodo}>update</p> 
                 </NavLink>
                  </h3>
-                
+                 <NavLink to={'/'}>
+                    <button onClick={deleteTodo}>Delete</button>
+                    </NavLink>
             </div>
             <div>
             <input placeholder="title" defaultValue={todo?.title} onChange={(e) => {
@@ -56,7 +58,15 @@ function Todo() {
     console.log("body : ", todo.body)
 }
 
-
+let deleteTodo = async () => {
+    console.log("note before delete", todo.body)
+  fetch(`/api/todos/${id}`, {
+      method: "DELETE",
+      headers: {
+          'Content-Type': 'application/json'
+      },
+  }).catch((err)=>{console.log('error')})
+}
 
 
   return <div> 
