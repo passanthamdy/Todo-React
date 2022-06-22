@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ListItem from "../components/ListItem";
 import { NavLink } from "react-router-dom";
+import AddTodo from "../components/AddTodo";
 
 function TodoList() {
   let [todos, setTodos] = useState([]);
@@ -45,7 +46,9 @@ function TodoList() {
        <div className='todos-header'>
         <h3>My tasks to do </h3>
       </div>
+      <AddTodo></AddTodo>
       {renderTodos()}
+   
     </div>
   );
 }
