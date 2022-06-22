@@ -6,12 +6,14 @@ import { NavLink } from "react-router-dom";
 function Todo() {
   let { id } = useParams();
   let [todo, setTodo] = useState({});
+
   console.log(id)
   useEffect(() => {
     fetch(`/api/todos/${id}`)
       .then((response) => {return response.json();})
       .then((data) => { setTodo(data)  })
-      .catch((err) => { console.log("error");});
+      .catch((err) => { 
+      });
   }, [id]);
 
 
@@ -22,7 +24,7 @@ function Todo() {
             <div className="todo-header">      
             <h3>
                 <NavLink to={'/'}>
-                    <p onClick={updateTodo}>update</p> 
+                    <p  onClick={handleSubmit}>create or update</p> 
                 </NavLink>
                  </h3>
                  <NavLink to={'/'}>
@@ -38,6 +40,8 @@ function Todo() {
                  defaultValue={todo?.body}>
 
                 </textarea>
+             
+
                
             </div>
          
@@ -55,7 +59,6 @@ function Todo() {
         },
         body: JSON.stringify(todo)
     }).catch((err)=>{console.log('error')})
-    console.log("body : ", todo.body)
 }
 
 let deleteTodo = async () => {
@@ -67,7 +70,29 @@ let deleteTodo = async () => {
       },
   }).catch((err)=>{console.log('error')})
 }
+let createTodo = async () => {
+    fetch(`/api/todos`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(todo)
+    }).catch((err)=>{
+        console.log('post error:' ,err)
+    })
+    }
 
+    let handleSubmit =()=>
+    {
+       if(id !== 'add'){
+        updateTodo()
+     }else if(id ==='add' ) {
+        console.log('create')
+      createTodo()
+     }else{
+
+     }
+    }
 
   return <div> 
     {renderTodoObj()}
